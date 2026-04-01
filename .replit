@@ -3,10 +3,7 @@ modules = ["python-3.11"]
 
 [nix]
 channel = "stable-25_05"
-packages = [
-  "python311Full",
-  "tk"
-]
+packages = ["python311Full", "tk"]
 
 [unitTest]
 language = "python3"
@@ -15,8 +12,40 @@ language = "python3"
 requiredFiles = [".replit", "replit.nix"]
 
 [deployment]
-run = ["python3", "main.py"]
+run = ["python3", "some_script.py"]
 deploymentTarget = "cloudrun"
 
 [agent]
 expertMode = true
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "HelloWorld"
+mode = "sequential"
+author = 49527123
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python3 hello.world.py"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start application"
+
+[[workflows.workflow]]
+name = "Start application"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python some_script.py"
+
+[workflows.workflow.metadata]
+outputType = "console"

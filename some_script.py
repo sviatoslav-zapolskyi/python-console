@@ -1,0 +1,13 @@
+print('Привіт!')
+print('   *   ')
+print('  ***  ')
+print(' ***** ')
+print('*******')
+print()
+
+print('   0  ')
+print('  0 0 ')
+print(' (0 0)')
+print('  (_) ')
+print(' ^^^^^')
+print()
